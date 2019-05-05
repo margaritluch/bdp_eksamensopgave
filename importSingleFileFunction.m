@@ -145,3 +145,12 @@ outputdata.CPEAK = cell2mat(rawNumericColumns(:, 3));
 % Untitled.Date=datenum(Untitled.Date);
 % Untitled.Time=datenum(Untitled.Time);
 
+%% Custommade to add combined DateTime coloumn
+dates = outputdata.Date(:,:);
+dates = datetime(dates,'InputFormat','dd.MM.yyyy',"Format","dd-MM-yyyy HH:mm:ss");
+                
+times = outputdata.Time(:,:);
+times = datetime(times,'InputFormat','HH:mm:ss',"Format","dd-MM-yyyy HH:mm:ss");
+                
+outputdata.fullData = dates + timeofday(times);
+             
